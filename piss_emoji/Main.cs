@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Reflection;
+﻿using System.Reflection;
 using MelonLoader;
 using UnityEngine;
-using UnityEngine.UI;
+using VRC.UI;
+
 // ReSharper disable InconsistentNaming
 
 namespace piss_emoji
@@ -13,28 +13,21 @@ namespace piss_emoji
 
         public override void OnApplicationLateStart()
         {
-            HarmonyInstance.Patch(typeof(VRCPlayer).GetMethod(nameof(VRCPlayer.SpawnEmojiRPC)),
-                typeof(Main).GetMethod(nameof(SpawnEmojiRPCPatch), BindingFlags.NonPublic | BindingFlags.Static)
-                    ?.ToNewHarmonyMethod());
             _pissSprite = LoadSprite("piss_emoji.piss_drops_border.png");
-            MelonCoroutines.Start(OnVRCUiManagerInit());
+
+            HarmonyInstance.Patch(typeof(EmojiManager).GetMethod(nameof(EmojiManager.Method_Private_Void_0)),
+                typeof(Main).GetMethod(nameof(Private_Void_0Patch), BindingFlags.NonPublic | BindingFlags.Static)
+                    ?.ToNewHarmonyMethod());
         }
 
-        private static IEnumerator OnVRCUiManagerInit()
+        private static void Private_Void_0Patch(ref EmojiManager __instance)
         {
-            while (VRCUiManager.field_Private_Static_VRCUiManager_0 == null)
-                yield return null;
-
-            var pissEmojiIcon = GameObject.Find("UserInterface/QuickMenu/EmojiMenu/Page6/EmojiButton9");
-            pissEmojiIcon.GetComponent<Image>().sprite = _pissSprite;
-        }
-
-        private static void SpawnEmojiRPCPatch(ref VRCPlayer __instance, int param_1)
-        {
-            if (param_1 != 56) return;
-            var pissEmoji = __instance.field_Private_EmojiGenerator_0
-                .field_Public_ArrayOf_GameObject_0[param_1].GetComponent<Renderer>();
-            pissEmoji.material.color = Color.yellow;
+            foreach (var data in __instance.field_Private_List_1_EmojiData_0)
+            {
+                if (data.Name != "Splash") continue;
+                data.SpawnablePrefab.GetComponent<Renderer>().material.color = Color.yellow;
+                data.Image = _pissSprite;
+            }
         }
 
         private Sprite LoadSprite(string manifestString)

@@ -1,7 +1,7 @@
 ﻿using MelonLoader;
 using Main = piss_emoji.Main;
 
-[assembly: MelonInfo(typeof(Main), "Piss Emoji", "1.0.0", "abbey")]
+[assembly: MelonInfo(typeof(Main), "Piss Emoji", "1.0.1", "abbey", "https://github.com/abbeybabbey/vrc_piss_emoji")]
 [assembly: MelonGame("VRChat", "VRChat")]
 [assembly: MelonPlatform(MelonPlatformAttribute.CompatiblePlatforms.WINDOWS_X64)]
 [assembly: MelonPlatformDomain(MelonPlatformDomainAttribute.CompatibleDomains.IL2CPP)]
