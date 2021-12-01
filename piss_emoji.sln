@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "piss_emoji", "piss_emoji\piss_emoji.csproj", "{7636DBFB-FD84-489B-AE2A-5D6B377726BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WingStateSaver", "WingStateSaver\WingStateSaver.csproj", "{87883624-A49F-4937-846C-3E711964942F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7636DBFB-FD84-489B-AE2A-5D6B377726BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7636DBFB-FD84-489B-AE2A-5D6B377726BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7636DBFB-FD84-489B-AE2A-5D6B377726BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87883624-A49F-4937-846C-3E711964942F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87883624-A49F-4937-846C-3E711964942F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87883624-A49F-4937-846C-3E711964942F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87883624-A49F-4937-846C-3E711964942F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

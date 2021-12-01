@@ -1,7 +1,7 @@
 ﻿using MelonLoader;
-using Main = piss_emoji.Main;
+using Main = WingStateSaver.Main;
 
-[assembly: MelonInfo(typeof(Main), "Piss Emoji", "1.0.1", "abbey", "https://github.com/abbeybabbey/simple_mods")]
+[assembly: MelonInfo(typeof(Main), "WingStateSaver", "1.0.0", "abbey", "https://github.com/abbeybabbey/simple_mods")]
 [assembly: MelonGame("VRChat", "VRChat")]
 [assembly: MelonPlatform(MelonPlatformAttribute.CompatiblePlatforms.WINDOWS_X64)]
 [assembly: MelonPlatformDomain(MelonPlatformDomainAttribute.CompatibleDomains.IL2CPP)]
