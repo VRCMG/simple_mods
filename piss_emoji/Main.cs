@@ -1,11 +1,13 @@
-﻿using System.Reflection;
+﻿using System.Linq;
+using System.Reflection;
 using MelonLoader;
+using UnhollowerRuntimeLib.XrefScans;
 using UnityEngine;
 using VRC.UI;
 
 // ReSharper disable InconsistentNaming
 
-namespace piss_emoji
+namespace PissEmoji
 {
     public class Main : MelonMod
     {
@@ -13,14 +15,20 @@ namespace piss_emoji
 
         public override void OnApplicationLateStart()
         {
-            _pissSprite = LoadSprite("piss_emoji.piss_drops_border.png");
+            _pissSprite = LoadSprite("PissEmoji.piss_drops_border.png");
 
-            HarmonyInstance.Patch(typeof(EmojiManager).GetMethod(nameof(EmojiManager.Method_Private_Void_0)),
-                typeof(Main).GetMethod(nameof(Private_Void_0Patch), BindingFlags.NonPublic | BindingFlags.Static)
+            //https://melonwiki.xyz/#/modders/xrefscanning?id=example always useful
+            var initializeMethodInfo = typeof(EmojiManager).GetMethods()
+                .First(mi => XrefScanner.XrefScan(mi)
+                    .Any(instance => instance.Type == XrefType.Global && instance.ReadAsObject() != null &&
+                                     instance.ReadAsObject().ToString() == "UI.RecentlyUsedEmojiNames"));
+
+            HarmonyInstance.Patch(typeof(EmojiManager).GetMethod(initializeMethodInfo.Name),
+                typeof(Main).GetMethod(nameof(InitializePatch), BindingFlags.NonPublic | BindingFlags.Static)
                     ?.ToNewHarmonyMethod());
         }
 
-        private static void Private_Void_0Patch(ref EmojiManager __instance)
+        private static void InitializePatch(ref EmojiManager __instance)
         {
             foreach (var data in __instance.field_Private_List_1_EmojiData_0)
             {

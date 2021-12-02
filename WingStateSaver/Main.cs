@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Linq;
 using MelonLoader;
+using UnityEngine;
 using UnityEngine.Events;
 using VRC.UI.Elements;
-using Object = UnityEngine.Object;
 
 namespace WingStateSaver
 {
@@ -41,19 +41,21 @@ namespace WingStateSaver
             if (_leftWingOpened.Value) leftWing.field_Public_Button_0.Press();
             if (_rightWingOpened.Value) rightWing.field_Public_Button_0.Press();
 
-            leftWing.field_Public_Button_0.m_OnClick.AddListener((UnityAction)LeftWingClick);
+            leftWing.field_Public_Button_0.m_OnClick.AddListener((UnityAction) LeftWingClick);
 
-            rightWing.field_Public_Button_0.m_OnClick.AddListener((UnityAction)RightWingClick);
+            rightWing.field_Public_Button_0.m_OnClick.AddListener((UnityAction) RightWingClick);
         }
 
         private static void LeftWingClick()
         {
-            MelonPreferences.SetEntryValue(_leftWingOpened.Category.Identifier, _leftWingOpened.Identifier, !_leftWingOpened.Value);
+            MelonPreferences.SetEntryValue(_leftWingOpened.Category.Identifier, _leftWingOpened.Identifier,
+                !_leftWingOpened.Value);
         }
 
         private static void RightWingClick()
         {
-            MelonPreferences.SetEntryValue(_rightWingOpened.Category.Identifier, _rightWingOpened.Identifier, !_rightWingOpened.Value);
+            MelonPreferences.SetEntryValue(_rightWingOpened.Category.Identifier, _rightWingOpened.Identifier,
+                !_rightWingOpened.Value);
         }
     }
 }
