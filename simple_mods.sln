@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WingStateSaver", "WingState
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PissEmoji", "PissEmoji\PissEmoji.csproj", "{7636DBFB-FD84-489B-AE2A-5D6B377726BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QMRestart", "QMRestart\QMRestart.csproj", "{241FB805-B863-4BFF-A03B-0C55F2A7C003}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7636DBFB-FD84-489B-AE2A-5D6B377726BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7636DBFB-FD84-489B-AE2A-5D6B377726BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7636DBFB-FD84-489B-AE2A-5D6B377726BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{241FB805-B863-4BFF-A03B-0C55F2A7C003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{241FB805-B863-4BFF-A03B-0C55F2A7C003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{241FB805-B863-4BFF-A03B-0C55F2A7C003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{241FB805-B863-4BFF-A03B-0C55F2A7C003}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,7 @@
 ﻿using MelonLoader;
-using Main = PissEmoji.Main;
+using Main = QMRestart.Main;
 
-[assembly: MelonInfo(typeof(Main), "Piss Emoji", "1.0.2", "abbey", "https://github.com/abbeybabbey/simple_mods")]
+[assembly: MelonInfo(typeof(Main), "QMRestart", "1.0.0", "abbey", "https://github.com/abbeybabbey/simple_mods")]
 [assembly: MelonGame("VRChat", "VRChat")]
 [assembly: MelonPlatform(MelonPlatformAttribute.CompatiblePlatforms.UNIVERSAL)]
 [assembly: MelonPlatformDomain(MelonPlatformDomainAttribute.CompatibleDomains.IL2CPP)]
