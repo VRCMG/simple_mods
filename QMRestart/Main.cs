@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
 using MelonLoader;
+using UnhollowerRuntimeLib.XrefScans;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -14,10 +17,17 @@ namespace QMRestart
     {
         private static GameObject _exitButtonGameObject;
         private static Sprite _restartSprite;
+        private static MethodInfo _modalConfirmDialogMethodInfo;
 
         public override void OnApplicationStart()
         {
             _restartSprite = LoadSprite("QMRestart.update-arrow.png");
+
+            _modalConfirmDialogMethodInfo = typeof(UIMenu).GetMethods()
+                .First(mi => mi.Name.StartsWith("Method_Public_Void_String_String_Action_Action_") && XrefScanner.XrefScan(mi)
+                    .Any(instance =>
+                        instance.Type == XrefType.Global && instance.ReadAsObject().ToString().Contains("ConfirmDialog")));
+
             MelonCoroutines.Start(OnQuickMenuInitiated());
         }
 
@@ -75,8 +85,8 @@ namespace QMRestart
 
         private static void ModalDialog(string title, string body, Action acceptAction, Action declineAction = null)
         {
-            Object.FindObjectOfType<UIMenu>()
-                .Method_Public_Void_String_String_Action_Action_PDM_0(title, body, acceptAction, declineAction);
+            _modalConfirmDialogMethodInfo?.Invoke(Resources.FindObjectsOfTypeAll<UIMenu>().FirstOrDefault(),
+                new object[] { title, body, (Il2CppSystem.Action)acceptAction, (Il2CppSystem.Action)declineAction });
         }
     }
 }

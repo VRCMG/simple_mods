@@ -19,7 +19,7 @@ namespace PissEmoji
 
             //https://melonwiki.xyz/#/modders/xrefscanning?id=example always useful
             var initializeMethodInfo = typeof(EmojiManager).GetMethods()
-                .First(mi => XrefScanner.XrefScan(mi)
+                .First(mi => mi.Name.StartsWith("Method_Private_Void_") && XrefScanner.XrefScan(mi)
                     .Any(instance => instance.Type == XrefType.Global && instance.ReadAsObject() != null &&
                                      instance.ReadAsObject().ToString() == "UI.RecentlyUsedEmojiNames"));
 
