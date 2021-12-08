@@ -6,4 +6,4 @@ using Main = PissEmoji.Main;
 [assembly: MelonPlatform(MelonPlatformAttribute.CompatiblePlatforms.UNIVERSAL)]
 [assembly: MelonPlatformDomain(MelonPlatformDomainAttribute.CompatibleDomains.IL2CPP)]
 [assembly: MelonProcess("VRChat.exe")]
-[assembly: MelonGameVersion("1156")]
+[assembly: MelonGameVersion("1159")]
