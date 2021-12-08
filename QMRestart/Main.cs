@@ -18,9 +18,13 @@ namespace QMRestart
         private static GameObject _exitButtonGameObject;
         private static Sprite _restartSprite;
         private static MethodInfo _modalConfirmDialogMethodInfo;
+        private static string _processPath;
 
         public override void OnApplicationStart()
         {
+            var processModule = Process.GetCurrentProcess().MainModule;
+            if (processModule != null) _processPath = processModule.FileName;
+
             _restartSprite = LoadSprite("QMRestart.update-arrow.png");
 
             _modalConfirmDialogMethodInfo = typeof(UIMenu).GetMethods()
@@ -53,7 +57,7 @@ namespace QMRestart
                 ModalDialog("Restart", "Really restart VRChat?", () =>
                 {
                     Application.Quit();
-                    Process.Start(Environment.CurrentDirectory + "\\VRChat.exe", Environment.CommandLine);
+                    Process.Start(_processPath, Environment.CommandLine);
                 });
             }
 
